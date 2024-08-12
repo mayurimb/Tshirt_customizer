@@ -7,6 +7,11 @@ dotenv.config();
 const router = express.Router();
 const STABLE_DIFFUSION_API_KEY = process.env.STABLE_DIFFUSION_API_KEY;
 
+router.route('/').get((req, res) => {
+  res.status(200).json({ message: "Hello from DALL.E ROUTES" })
+})
+
+
 router.route('/').post(async (req, res) => {
   try {
         //const { prompt } = req.body;
