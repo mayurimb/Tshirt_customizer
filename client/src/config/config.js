@@ -1,10 +1,5 @@
 const config = {
-  development: {
-    backendUrl: "http://localhost:3000/api/sdiffusion",
-  },
-  production: {
-    backendUrl: "https://devswag.onrender.com/api/sdiffusion",
-  },
+    backendUrl: process.env.REACT_APP_BACKEND_URL ||"http://localhost:3000/api/sdiffusion",
 };
 
 export default config;
