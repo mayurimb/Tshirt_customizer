@@ -14,9 +14,6 @@ app.use(cors({
   }));
 //app.use(cors(corsOptions));
 app.use(express.json({ limit: "50mb" }))
-app.get('/test', (req, res) => {
-  res.json({ message: "CORS test successful!" });
-});
 app.use("/api/sdiffusion", sdiffusionRoutes);
 
 app.use((req, res, next) => {
