@@ -16,4 +16,17 @@ app.use(cors({
 app.use(express.json({ limit: "50mb" }))
 
 app.use("/api/sdiffusion", sdiffusionRoutes);
-app.listen(3000, () => console.log("Server has started on port 3000"))
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') {
+      res.sendStatus(200);
+  } else {
+      next();
+  }
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log("Server has started on port ${PORT}"))

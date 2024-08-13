@@ -8,13 +8,12 @@ const router = express.Router();
 const STABLE_DIFFUSION_API_KEY = process.env.STABLE_DIFFUSION_API_KEY;
 
 router.route('/').get((req, res) => {
-  res.status(200).json({ message: "Hello from DALL.E ROUTES" })
+  res.status(200).json({ message: "Hello from Stable Diffusion route" })
 })
 
 
 router.route('/').post(async (req, res) => {
   try {
-        //const { prompt } = req.body;
         const response = await fetch(
             "https://api-inference.huggingface.co/models/CompVis/stable-diffusion-v1-4",
             {
@@ -26,6 +25,9 @@ router.route('/').post(async (req, res) => {
                 body: JSON.stringify(req.body.inputs ),
             }
         );
+        if (!response.ok) {
+          throw new Error('Failed to fetch from Stable Diffusion API');
+        }
         const result = await (await response.blob()).arrayBuffer()
         res.status(200).send(Buffer.from(result));
   } catch (error) {
