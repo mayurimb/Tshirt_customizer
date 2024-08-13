@@ -16,4 +16,4 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: "50mb" }))
 
 app.use("/api/sdiffusion", sdiffusionRoutes);
-app.listen(3000, () => console.log(`Server has started on port ${port}`))
+app.listen(3000, () => console.log("Server has started on port 3000"))
