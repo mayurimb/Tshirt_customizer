@@ -12,7 +12,7 @@ app.use(cors({
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type,Authorization',
   }));
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use(express.json({ limit: "50mb" }))
 
 app.use("/api/sdiffusion", sdiffusionRoutes);
