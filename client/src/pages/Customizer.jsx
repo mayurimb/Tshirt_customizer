@@ -8,7 +8,6 @@ import { downloadCanvasToImage, reader } from '../config/helpers';
 import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants';
 import { fadeAnimation, slideAnimation } from '../config/motion';
 import { AIPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components';
-import * as dotenv from 'dotenv';
 
 const Customizer = () => {
   const snap = useSnapshot(state)
@@ -22,8 +21,6 @@ const Customizer = () => {
   })
 
   const canvasRef = useRef(null);
-  dotenv.config();
-  const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -96,7 +93,7 @@ const Customizer = () => {
     try {
       setGeneratingImg(true);
 
-        const response = await fetch(`${REACT_APP_BACKEND_URL}api/sdiffusion`, {
+        const response = await fetch("https://tshirt-customizer-orcin.vercel.app/api/sdiffusion", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
